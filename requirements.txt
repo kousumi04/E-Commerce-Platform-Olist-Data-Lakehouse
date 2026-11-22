@@ -1,0 +1,17 @@
+# Distributed Data Processing (3.5.x LTS for stable Windows + Java 11/17 support)
+pyspark==3.5.9
+
+# Data Manipulation & Profiling
+pandas==3.1.1
+numpy>=2.0.0,<3.0.0
+pyarrow>=18.0.0
+
+# AWS SDK
+boto3==1.44.6
+
+# Configuration & Environment
+python-dotenv>=1.0.1
+PyYAML>=6.0.2
+
+# Testing
+pytest>=8.3.0
