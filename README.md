@@ -1,5 +1,5 @@
 
-# End-to-End E-Commerce ETL & BI Pipeline
+# End-to-End E-Commerce Data Engineering and BI Pipeline
 
 ![Python](https://img.shields.io/badge/Python-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![PySpark](https://img.shields.io/badge/Apache%20Spark-3.5.9-E25A1C?style=for-the-badge&logo=apachespark&logoColor=white)
@@ -8,11 +8,11 @@
 ![Apache Parquet](https://img.shields.io/badge/Apache%20Parquet-Snappy-50ABF1?style=for-the-badge&logo=apache&logoColor=white)
 ![Power BI](https://img.shields.io/badge/Power%20BI-Import%20Mode-F2C811?style=for-the-badge&logo=powerbi&logoColor=black)
 
-An end-to-end data engineering and business intelligence pipeline built using the **Olist Brazilian E-Commerce dataset**. The project processes approximately 100,000 orders across nine relational source datasets using **PySpark**, organizes data through a **Bronze → Silver → Gold Medallion Architecture**, stores analytical datasets in **Snappy-compressed Parquet** on Amazon S3, exposes curated data through **Amazon Athena**, and delivers business insights through interactive **Power BI dashboards**.
+This project implements an end-to-end data engineering and business intelligence pipeline using the **Olist Brazilian E-Commerce dataset**. It processes approximately 100,000 orders across nine relational datasets with **PySpark**, organizes data using a **Bronze ? Silver ? Gold medallion architecture**, stores analytical datasets as **Snappy-compressed Parquet** files in Amazon S3, makes curated data available through **Amazon Athena**, and presents business insights in interactive **Power BI dashboards**.
 
-The pipeline focuses on reliable ingestion, explicit schemas, data cleansing, referential-integrity checks, dimensional modeling, financial reconciliation, and cost-conscious cloud analytics.
+The pipeline emphasizes reliable ingestion, explicit schemas, data quality, referential integrity, dimensional modeling, financial reconciliation, and cost-aware cloud analytics.
 
-The Gold layer contains a reporting-oriented star schema with **four fact tables and five dimension tables**, designed to preserve the grain of different business events and prevent incorrect aggregations.
+The Gold layer contains a reporting-oriented star schema with **four fact tables and five dimension tables**. Each fact table preserves the grain of its business event to support accurate aggregations.
 
 **GitHub Repository:** [kousumi04/E-Commerce-Platform-Olist-Data-Lakehouse](https://github.com/kousumi04/E-Commerce-Platform-Olist-Data-Lakehouse)
 
@@ -748,11 +748,11 @@ Screenshot documenting the Athena table creation process used to expose the cura
 
 ![Athena Table Creation](docs/images/athena-tables-creation.png)
 
-### 8. PowerBI Table Layout
+### 8. Power BI Table Layout
 
 Visual reference for the analytical table layout used in the query-serving layer.
 
-![PowerBI Table Layout](docs/images/table-layout.png)
+![Power BI Table Layout](docs/images/table-layout.png)
 
 ---
 
@@ -928,7 +928,7 @@ Install the following before running the pipeline:
 - An AWS account and IAM credentials with the required S3 permissions for cloud publication.
 - The nine Olist CSV datasets downloaded from Kaggle.
 
-The commands below use Windows Command Prompt syntax.
+The commands below use Windows Command Prompt syntax (cmd.exe).
 
 ### 2. Clone the Repository
 
@@ -999,7 +999,7 @@ The processing scripts are located in the `scripts/` directory.
 
 Run the ingestion, transformation, validation, and modeling stages using the execution entry point provided in that directory.
 
-The pipeline should complete local processing and validation before publishing datasets to S3.
+Complete local processing and validation before publishing datasets to S3.
 
 Refer to the scripts and `docs/architecture.md` for the exact execution sequence and script arguments.
 
@@ -1056,9 +1056,9 @@ Keep credentials in the AWS CLI profile or another secure credential provider.
 
 The AWS Glue Data Catalog stores the metadata required by Athena to interpret the Gold Parquet files.
 
-The project uses manually defined external tables rather than Glue Crawlers.
+The project uses manually defined external tables instead of Glue Crawlers.
 
-This provides explicit control over table definitions while avoiding a crawler dependency.
+This provides explicit control over table definitions and avoids a crawler dependency.
 
 ### 4. Amazon Athena
 
@@ -1157,9 +1157,9 @@ The AWS components are configured to reduce unnecessary managed-service usage an
 | S3 lifecycle rules for query logs | Expires query logs according to the configured retention policy |
 | Power BI Import Mode | Avoids repeatedly querying Athena for every dashboard interaction |
 
-These measures are intended to make the architecture cost-conscious.
+These measures help control infrastructure and query costs.
 
-They do not guarantee zero AWS charges. Actual billing depends on service usage, account eligibility, region, storage, requests, and current AWS pricing.
+They do not eliminate AWS charges. Actual costs depend on service usage, account eligibility, region, storage, requests, and current AWS pricing.
 
 ---
 
